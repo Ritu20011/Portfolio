@@ -1,0 +1,624 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+// font-family: "Itim", cursive;
+// font-family: "Fondamento", cursive;
+
+// $light: #cdcaff;
+// $dark: #2217ec;
+$white: #fff;
+$black: #000;
+
+
+// pink
+// $dk-light: #fcbbd4;
+// $dk-dark: #76002d;
+
+
+
+// Define SCSS variables for both themes
+$light-theme: ( // toggler
+    toggler-back-light: #78c1d5,
+    toggler-back-dark: #b9e6f4,
+    toggler-back-border: #b9e6f4,
+
+    light-color: #cdcaff,
+    dark-color: #2217ec,
+);
+
+$dark-theme: ( // toggler
+    toggler-back-light: #464646,
+    toggler-back-dark: #232323,
+    toggler-back-border: #202020,
+
+    light-color: #fcbbd4,
+    dark-color: #76002d,
+);
+
+// $dark-theme: (light-color: #ffa958,
+//     dark-color: #fd4800,
+// );
+// Mixin to generate CSS custom properties
+@mixin theme-variables($theme) {
+    --toggler-back-light: #{map-get($theme, toggler-back-light)};
+    --toggler-back-dark: #{map-get($theme, toggler-back-dark)};
+    --toggler-back-border: #{map-get($theme, toggler-back-border)};
+
+    --light: #{map-get($theme, light-color)};
+    --dark: #{map-get($theme, dark-color)};
+}
+
+// Apply the light theme by default
+:root {
+    @include theme-variables($light-theme);
+}
+
+// Apply the dark theme when the body has the class "dark"
+body .back.dark {
+    @include theme-variables($dark-theme);
+}
+
+.dark {
+    .swiper {
+        box-shadow: 0 0 10px $white;
+    }
+}
+
+
+
+
+
+
+
+@mixin trans() {
+    transition: all 0.3s ease-in-out;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    color: $black;
+}
+
+h1,
+.h1 {
+    font-family: "Itim", cursive;
+    color: var(--dark);
+    margin-bottom: 30px;
+}
+
+h2,
+.h2 {
+    font-family: "Itim", cursive;
+    color: var(--dark);
+    font-size: 25px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+h3,
+.h3 {
+    font-size: 20px;
+}
+
+a {
+    color: var(--dark);
+    text-decoration: none;
+    position: relative;
+    @include trans();
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: var(--dark);
+        display: block;
+        height: 1px;
+        width: 0;
+        @include trans();
+    }
+
+    &:hover {
+        color: var(--dark);
+
+        &::after {
+            width: 100%;
+        }
+    }
+}
+
+.back {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    padding: 50px 0;
+    box-sizing: border-box;
+}
+
+.swiper {
+    width: 90%;
+    max-width: 1400px;
+    height: 100%;
+    backdrop-filter: blur(2px);
+}
+
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.swiper-pagination {
+    top: 0 !important;
+    height: fit-content;
+    width: fit-content !important;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(var(--light), $white);
+    padding: 5px;
+    border-radius: 0 0 20px 20px;
+}
+
+
+
+.swiper-pagination-bullet {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    opacity: 1;
+    background-color: transparent;
+    color: var(--dark);
+    padding: 10px 20px;
+    border-radius: 0 0 15px 15px;
+    margin: 0 !important;
+    @include trans();
+    font-family: "Itim", cursive;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--dark);
+    color: $white;
+}
+
+.swiper-slide-next,
+.swiper-slide-prev,
+.swiper-cube .swiper-slide-next+.swiper-slide {
+    pointer-events: none !important;
+}
+
+.content {
+    margin: 60px 10px 10px;
+    background-image: linear-gradient(var(--light) -50%, $white);
+    height: calc(100% - 70px);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+    overflow: auto;
+    scrollbar-color: var(--dark) var(--light);
+    scrollbar-width: thin;
+    box-shadow: 0 0px 15px $white;
+}
+
+// contact
+.locationDiv {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+
+    .icon {
+        font-size: 30px;
+        color: var(--light);
+        width: 40px;
+        text-align: center;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.socialMedia {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+    margin-top: 50px;
+
+    a {
+        color: var(--dark);
+        background-color: var(--light);
+        width: 35px;
+        font-size: 20px;
+        line-height: 35px;
+        text-align: center;
+        border-radius: 10px 0 10px 0;
+        @include trans();
+
+        &:hover {
+            color: $white;
+            background-color: var(--dark);
+            border-radius: 0 10px 0 10px;
+        }
+
+        &::after {
+            display: none;
+        }
+    }
+}
+
+//  about
+.abtFlex {
+    // display: flex;
+    // column-gap: 30px;
+    // row-gap: 30px;
+    margin-bottom: 30px;
+}
+
+.myName {
+    font-size: 40px;
+    color: var(--dark);
+    margin-bottom: 0;
+    font-weight: 700;
+    font-family: "Itim", cursive;
+    text-transform: uppercase;
+}
+
+.desig {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.myPic {
+    width: 250px;
+    height: 250px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    opacity: 0.1;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.skill {
+    background-image: linear-gradient(var(--light) -30%, var(--dark));
+    padding: 20px;
+    display: flex;
+    font-size: 25px;
+    text-transform: uppercase;
+    color: $white;
+    text-shadow: 0 0 5px $white;
+    align-items: center;
+    justify-content: start;
+    column-gap: 10px;
+    font-weight: 700;
+    border-radius: 20px;
+    cursor: pointer;
+    flex-wrap: wrap;
+    height: 100%;
+    @include trans();
+
+    .icon {
+        font-size: 40px;
+        filter: drop-shadow(0 0 5px $white);
+    }
+
+    p {
+        margin-bottom: 0;
+        margin: auto;
+    }
+
+    &:hover {
+        background-image: linear-gradient(var(--light) 80%, var(--dark));
+        color: $black;
+
+    }
+}
+
+
+// portfolio
+.portItem {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+
+    img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        object-position: left;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        cursor: pointer;
+        @include trans();
+
+        .ico {
+            width: 50px;
+            line-height: 50px;
+            background-color: $white;
+            color: var(--dark);
+            text-align: center;
+            border-radius: 10px;
+            @include trans();
+
+            &:hover {
+                border-radius: 0 10px 0;
+            }
+        }
+    }
+
+    &:hover {
+        .overlay {
+            top: 0;
+        }
+    }
+}
+
+// education
+.glowList {
+    li {
+        padding-right: 10px;
+        list-style-type: none;
+        position: relative;
+        padding-top: 15px;
+
+        &::before {
+            content: "";
+            box-shadow: 0 0 0px 2px $white, 0 0 10px 7px $white;
+            position: absolute;
+            left: -30px;
+            border-radius: 50%;
+            background: var(--dark);
+            width: 10px;
+            height: 10px;
+            top: 20px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: -26px;
+            background: var(--dark);
+            width: 1px;
+            height: 100%;
+            top: 0;
+            z-index: -1;
+        }
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+    .year {
+        color: var(--dark);
+        font-weight: 700;
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    .content {
+        margin: 10px;
+        height: calc(100% - 20px);
+    }
+
+    .swiper {
+        width: 100%;
+    }
+
+    .back {
+        padding: 20px 20px 100px;
+    }
+
+    .swiper-pagination {
+        top: auto !important;
+        bottom: -100px !important;
+        left: -20px !important;
+        width: calc(100% + 40px) !important;
+        right: -20px;
+        margin: 0;
+    }
+
+    .abtFlex,
+    .myName,
+    .desig {
+        text-align: center;
+    }
+
+    .abtCont {
+        text-align: left;
+    }
+
+    .myPic {
+        float: none;
+    }
+
+    .skill {
+        padding: 10px 20px;
+    }
+}
+
+// toggler
+.toggler {
+    // @include trans();
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    width: 65px;
+    height: 30px;
+    border-radius: 15px;
+    background-image: linear-gradient(to right, var(--toggler-back-light), var(--toggler-back-dark));
+    border: solid 2px var(--toggler-back-light);
+
+    .sunMoon {
+        width: 40%;
+        background: #f5ec59;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        aspect-ratio: 1/1;
+        @include trans();
+        border: solid 2px #e7c65c;
+    }
+}
+.dark .sunMoon{
+    background: #fffdf2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .dark {
+//     .swiper {
+//         box-shadow: 0 0 10px $white;
+//     }
+
+//     .swiper-pagination {
+//         background-image: linear-gradient($dk-light, $white);
+//     }
+
+//     .swiper-pagination-bullet {
+//         color: $dk-dark;
+//     }
+
+//     .swiper-pagination-bullet-active {
+//         background-color: $dk-dark;
+//         color: $white;
+//     }
+
+//     .content {
+//         background-image: linear-gradient($dk-light -50%, $white);
+//         scrollbar-color: $dk-dark $dk-light;
+//     }
+
+//     h1,
+//     .h1,
+//     h2,
+//     .h2,
+//     h3,
+//     .h3,
+//     a,
+//     .myName,
+//     .glowList .year,
+//     .locationDiv .icon,
+//     .portItem .overlay .ico {
+//         color: $dk-dark;
+//     }
+
+//     a {
+//         &::after {
+//             background-color: $dk-dark;
+//         }
+//     }
+
+//     .skill {
+//         background-image: linear-gradient($dk-light -30%, $dk-dark);
+
+//         &:hover {
+//             background-image: linear-gradient($dk-light 80%, $dk-dark);
+//         }
+//     }
+
+//     .glowList {
+//         li {
+//             &::after {
+//                 background-color: $dk-dark;
+//             }
+
+//             &::before {
+//                 background-color: $dk-dark;
+//             }
+//         }
+//     }
+//     .socialMedia {
+//         a{
+//             background-color: $dk-light;
+//             &:hover{
+//                 background-color: $dk-dark;
+//             }
+//         }
+//     }
+// }
+
+
+
+
+
+// .swiper-slide-next,
+// .swiper-slide-prev{
+//     display: none;
+// }
