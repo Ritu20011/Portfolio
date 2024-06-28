@@ -37,8 +37,8 @@ $(document).ready(function () {
         effect: "cube",
         grabCursor: true,
         pauseOnMouseEnter: true,
-        // loop: true,
-        speed: 5000,
+        loop: true,
+        speed: 1000,
         cubeEffect: {
             shadow: false,
             slideShadows: true,

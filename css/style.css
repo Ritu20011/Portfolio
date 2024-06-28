@@ -223,7 +223,6 @@ a:hover::after {
   -o-object-position: center;
      object-position: center;
   border-radius: 20px;
-  opacity: 0.1;
   float: left;
   margin-right: 20px;
   margin-bottom: 10px;
@@ -351,7 +350,7 @@ a:hover::after {
     width: 100%;
   }
   .back {
-    padding: 20px 20px 100px;
+    padding: 50px 20px 100px;
   }
   .swiper-pagination {
     top: auto !important;
@@ -385,9 +384,10 @@ a:hover::after {
   border-radius: 15px;
   background-image: linear-gradient(to right, var(--toggler-back-light), var(--toggler-back-dark));
   border: solid 2px var(--toggler-back-light);
+  cursor: pointer;
 }
 .toggler .sunMoon {
-  width: 40%;
+  width: 25px;
   background: #f5ec59;
   border-radius: 50%;
   position: absolute;
@@ -395,10 +395,13 @@ a:hover::after {
   left: 0;
   transform: translate(0, -50%);
   aspect-ratio: 1/1;
-  transition: all 0.3s ease-in-out;
   border: solid 2px #e7c65c;
+  transition: all 0.3s ease-in-out;
 }
 
 .dark .sunMoon {
   background: #fffdf2;
+  left: calc(100% - 25px);
+  right: 0;
+  transition: all 0.3s ease-in-out;
 }/*# sourceMappingURL=style.css.map */

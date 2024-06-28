@@ -285,7 +285,6 @@ a {
     object-fit: cover;
     object-position: center;
     border-radius: 20px;
-    opacity: 0.1;
     float: left;
     margin-right: 20px;
     margin-bottom: 10px;
@@ -434,7 +433,7 @@ a {
     }
 
     .back {
-        padding: 20px 20px 100px;
+        padding: 50px 20px 100px;
     }
 
     .swiper-pagination {
@@ -476,9 +475,10 @@ a {
     border-radius: 15px;
     background-image: linear-gradient(to right, var(--toggler-back-light), var(--toggler-back-dark));
     border: solid 2px var(--toggler-back-light);
+    cursor: pointer;
 
     .sunMoon {
-        width: 40%;
+        width: 25px;
         background: #f5ec59;
         border-radius: 50%;
         position: absolute;
@@ -486,12 +486,16 @@ a {
         left: 0;
         transform: translate(0, -50%);
         aspect-ratio: 1/1;
-        @include trans();
         border: solid 2px #e7c65c;
+        @include trans();
     }
 }
 .dark .sunMoon{
     background: #fffdf2;
+    left: calc(100% - 25px);
+    right: 0;
+    @include trans();
+
 }
 
 
